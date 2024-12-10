@@ -13,12 +13,12 @@ public final class LguhcAddon extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        // Plugin startup logic
         ww = getServer().getServicesManager().load(GetWereWolfAPI.class);
         saveDefaultConfig();
         this.getCommand("rtpcommand").setExecutor(new RtpCommand());
         this.getCommand("lguhcAddon").setExecutor(this);
         this.getCommand("rtpcommand").setTabCompleter(new RtpCommand());
-        // Plugin startup logic
         getServer().getPluginManager().registerEvents(new JoiningListener(), this);
     }
 

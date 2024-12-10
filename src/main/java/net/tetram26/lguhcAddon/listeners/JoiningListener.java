@@ -13,8 +13,8 @@ import static net.tetram26.lguhcAddon.LguhcAddon.ww;
 public class JoiningListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onClientConnected(PlayerJoinEvent event){
-        if (ww.getWereWolfAPI().isState(StateGame.GAME) || ww.getWereWolfAPI().isState(StateGame.START) || ww.getWereWolfAPI().isState(StateGame.END)) {
+    public void onJoin(PlayerJoinEvent event){
+        if (ww.getWereWolfAPI().isState(StateGame.GAME) || ww.getWereWolfAPI().isState(StateGame.START) || ww.getWereWolfAPI().isState(StateGame.END) || ww.getWereWolfAPI().isState(StateGame.TRANSPORTATION)) {
             event.getPlayer().setGameMode(GameMode.SPECTATOR);
         }
     }

@@ -1,6 +1,5 @@
 package net.tetram26.lguhcAddon;
 
-import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -25,7 +24,7 @@ public class RtpCommand implements CommandExecutor, TabCompleter {
 
         //Si le pseudo du joueur n'est pas donné / Si il y a trop d'arg (ne marche si le joueur à un compte bugg)
         if (args.length != 1) {
-            commandSender.sendMessage("§c/rtp player>");
+            commandSender.sendMessage("§c/rtp <player>");
             return true;
         }
 
@@ -33,7 +32,12 @@ public class RtpCommand implements CommandExecutor, TabCompleter {
 
         //Si le pseudo du joueur n'est pas bon
         if(player == null || !player.isOnline()) {
-            commandSender.sendMessage("§cCe joueur n'existe pas.");
+            if (LguhcAddon.getInstance().getConfig().get("Erreurs.PlayerIsNull") != null) {
+                commandSender.sendMessage(LguhcAddon.getInstance().getConfig().getString("Erreurs.PlayerIsNull"));
+            }
+            else {
+                commandSender.sendMessage("<color:red>Le joueur ciblé n'est pas connecté ou n'existe pas.");
+            }
             return true;
         }
         else {
@@ -51,7 +55,13 @@ public class RtpCommand implements CommandExecutor, TabCompleter {
             Location location = new Location(world, x+centerX, world.getHighestBlockYAt(x+centerX, z+centerZ)+2, z+centerZ);
             player.teleport(location);
 
-            player.sendMessage(MiniMessage.miniMessage().deserialize(LguhcAddon.getInstance().getConfig().getString("messageToPlayer")));
+            if (LguhcAddon.getInstance().getConfig().get("messageToPlayer") != null){
+                player.sendMessage(LguhcAddon.getInstance().getConfig().getRichMessage("messageToPlayer"));
+            }
+            else {
+                player.sendMessage(MiniMessage.miniMessage().deserialize("<color:red>Vous avez été téléporté(e) aléatoirement sur la carte par un opérateur."));
+            }
+
         }
 
         return true;

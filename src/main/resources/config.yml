@@ -1,1 +1,7 @@
+#Ce plugin utilise l'API Adventure, elle contient Minimessage, que vous pouvez voir comment utiliser ici:
+#https://docs.advntr.dev/minimessage/format.html
+
 messageToPlayer: "<color:red>Vous avez été téléporté(e) aléatoirement sur la carte par un opérateur."
+
+Erreurs:
+  PlayerIsNull: "<color:red>Le joueur ciblé n'est pas connecté ou n'existe pas."
