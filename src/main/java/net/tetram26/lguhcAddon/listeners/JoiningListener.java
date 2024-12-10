@@ -14,7 +14,7 @@ public class JoiningListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onClientConnected(PlayerJoinEvent event){
-        if (ww.getWereWolfAPI().isState(StateGame.GAME)) {
+        if (ww.getWereWolfAPI().isState(StateGame.GAME) || ww.getWereWolfAPI().isState(StateGame.START) || ww.getWereWolfAPI().isState(StateGame.END)) {
             event.getPlayer().setGameMode(GameMode.SPECTATOR);
         }
     }

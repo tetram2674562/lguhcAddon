@@ -8,11 +8,12 @@ description: An addon plugin for the lguhc plugin
 load: STARTUP
 depend : [WereWolfPlugin]
 commands:
-  randomtp:
-    aliases: rtp
+  rtpCommand:
+    aliases :
+      - rtp
     description: Un commande qui téléporte le joueur ciblé aléatoirement sur la map
-    usage: /rtp <player>
-    permission: LgUhcAddon.rtp
+    usage: /rtpcommand <player>
+    permission: LguhcAddon.rtp
 
   lguhcAddon:
     aliases:
@@ -20,4 +21,4 @@ commands:
       - lga
     usage: /lguhcAddon
     description: reload la config
-    permission: lgUhcAddon.reload
+    permission: LguhcAddon.reload

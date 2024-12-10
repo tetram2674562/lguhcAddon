@@ -9,14 +9,15 @@ import org.jetbrains.annotations.NotNull;
 
 public final class LguhcAddon extends JavaPlugin {
 
-    public static GetWereWolfAPI ww = getInstance().getServer().getServicesManager().load(GetWereWolfAPI.class);
+    public static GetWereWolfAPI ww;
 
     @Override
     public void onEnable() {
+        ww = getServer().getServicesManager().load(GetWereWolfAPI.class);
         saveDefaultConfig();
-        getCommand("randomtp").setExecutor(new RtpCommand());
-        getCommand("lguhcAddon").setExecutor(this);
-        getCommand("randomtp").setTabCompleter(new RtpCommand());
+        this.getCommand("rtpcommand").setExecutor(new RtpCommand());
+        this.getCommand("lguhcAddon").setExecutor(this);
+        this.getCommand("rtpcommand").setTabCompleter(new RtpCommand());
         // Plugin startup logic
         getServer().getPluginManager().registerEvents(new JoiningListener(), this);
     }
@@ -25,6 +26,7 @@ public final class LguhcAddon extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
     }
+
     public static LguhcAddon getInstance(){
         return getPlugin(LguhcAddon.class);
     }

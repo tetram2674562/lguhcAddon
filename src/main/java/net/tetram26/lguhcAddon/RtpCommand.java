@@ -16,8 +16,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Random;
 
-public class
-RtpCommand implements CommandExecutor, TabCompleter {
+public class RtpCommand implements CommandExecutor, TabCompleter {
 
     Random random = new Random();
 
@@ -41,10 +40,15 @@ RtpCommand implements CommandExecutor, TabCompleter {
             World world = LguhcAddon.ww.getWereWolfAPI().getMapManager().getWorld();
 
             int wbSize = (int) world.getWorldBorder().getSize();
-            int x = random.nextInt(-wbSize, wbSize);
-            int z = random.nextInt(-wbSize, wbSize);
+            // La border n'est pas en 0,0?
+            Location WbCenter = world.getWorldBorder().getCenter();
+            int centerX = (int) WbCenter.x();
+            int centerZ = (int) WbCenter.z();
+            // La taille de la bordure divisé par 2 prcq sinon c'est trop grand
+            int x = random.nextInt(-wbSize/2, wbSize/2);
+            int z = random.nextInt(-wbSize/2, wbSize/2);
 
-            Location location = new Location(world, x, world.getHighestBlockYAt(x, z), z);
+            Location location = new Location(world, x+centerX, world.getHighestBlockYAt(x+centerX, z+centerZ)+2, z+centerZ);
             player.teleport(location);
 
             player.sendMessage(MiniMessage.miniMessage().deserialize(LguhcAddon.getInstance().getConfig().getString("messageToPlayer")));
