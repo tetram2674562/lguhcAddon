@@ -5,3 +5,5 @@ api-version: '1.21'
 prefix: LGADDON
 authors: [ tetram26 a.k.a gaspardAlizand ]
 description: An addon plugin for the lguhc plugin
+load: STARTUP
+depend : [WereWolfPlugin]
