@@ -3,5 +3,21 @@ version: '0.1'
 main: net.tetram26.lguhcAddon.LguhcAddon
 api-version: '1.21'
 prefix: LGADDON
-authors: [ tetram26 a.k.a gaspardAlizand ]
+authors: [ tetram26 a.k.a gaspardAlizand , ht06]
 description: An addon plugin for the lguhc plugin
+depend:
+  -
+commands:
+  randomtp:
+    aliases: rtp
+    description: Un commande qui téléporte le joueur ciblé aléatoirement sur la map
+    usage: /rtp <player>
+    permission: LgUhcAddon.rtp
+
+  lguhcAddon:
+    aliases:
+      - lguhca
+      - lga
+    usage: /lguhcAddon
+    description: reload la config
+    permission: lgUhcAddon.reload
