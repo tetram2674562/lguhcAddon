@@ -1,5 +1,5 @@
 name: lguhcAddon
-version: '0.1'
+version: '0.1.1'
 main: net.tetram26.lguhcAddon.LguhcAddon
 api-version: '1.21'
 prefix: LGADDON
